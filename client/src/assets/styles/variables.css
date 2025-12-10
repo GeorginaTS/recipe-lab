@@ -1,0 +1,58 @@
+/* Variables de color - Paleta càlida veggie */
+:root {
+  /* Colors principals */
+  --primary-green: #7cb342;
+  --primary-green-dark: #689f38;
+  --primary-green-light: #aed581;
+
+  --secondary-orange: #ff9800;
+  --secondary-orange-dark: #f57c00;
+  --secondary-orange-light: #ffb74d;
+
+  --accent-red: #e57373;
+  --accent-yellow: #ffd54f;
+
+  /* Colors de fons */
+  --bg-primary: #fffef7;
+  --bg-secondary: #f5f3eb;
+  --bg-card: #ffffff;
+
+  /* Colors de text */
+  --text-primary: #2e3c2a;
+  --text-secondary: #5a6c57;
+  --text-muted: #8a9688;
+
+  /* Colors funcionals */
+  --success: #66bb6a;
+  --error: #ef5350;
+  --warning: #ffa726;
+  --info: #42a5f5;
+
+  /* Gradient */
+  --gradient-primary: linear-gradient(135deg, #7cb342 0%, #ff9800 100%);
+  --gradient-secondary: linear-gradient(135deg, #aed581 0%, #ffb74d 100%);
+
+  /* Ombres */
+  --shadow-sm: 0 2px 8px rgba(46, 60, 42, 0.1);
+  --shadow-md: 0 4px 16px rgba(46, 60, 42, 0.15);
+  --shadow-lg: 0 8px 32px rgba(46, 60, 42, 0.2);
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Transicions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
