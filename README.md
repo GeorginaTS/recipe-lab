@@ -1,36 +1,36 @@
 # 🍳 Recipe Lab
 
-Aplicació web full-stack multiidioma per generar receptes amb intel·ligència artificial basant-se en els ingredients que tens al rebost o a la nevera. Utilitza Vue 3, TypeScript, Express i l'API de Groq amb Llama 3.3-70b.
+Full-stack multilingual web application to generate recipes with artificial intelligence based on the ingredients you have in your pantry or fridge. Built with Vue 3, TypeScript, Express, and Groq's API with Llama 3.3-70b.
 
-## 🌟 Característiques
+## 🌟 Features
 
-- 🤖 **Generació de receptes amb IA** - Utilitza Llama 3.3-70b-versatile de Groq
-- 🌍 **Multiidioma (i18n)** - Català, Español i English amb canvi dinàmic
-- 🎨 **Mobile-first** - Disseny responsive amb CSS modern
-- 📱 **Semàntic HTML5** - Estructura accessible i optimitzada SEO
-- ♿ **Accessible** - ARIA labels, navegació per teclat
-- 🥬 **Disseny veggie càlid** - Paleta de colors naturals
-- ⚡ **Temps real** - Resposta ràpida amb feedback visual (LoadingSpinner, ErrorMessage)
-- 🎯 **Sistema de disseny global** - CSS Variables i components reutilitzables
-- ✅ **TypeScript** - Tipat estàtic complet en frontend i backend
-- 🧪 **Tests complets** - Vitest (unit) + Cypress (E2E)
-- 🎭 **Component testing** - Tests de components Vue amb @vue/test-utils
+- 🤖 **AI Recipe Generation** - Uses Groq's Llama 3.3-70b-versatile
+- 🌍 **Multilingual (i18n)** - Catalan, Spanish, and English with dynamic language switching
+- 🎨 **Mobile-first** - Responsive design with modern CSS
+- 📱 **Semantic HTML5** - Accessible structure and SEO optimized
+- ♿ **Accessible** - ARIA labels, keyboard navigation
+- 🥬 **Warm veggie design** - Natural color palette
+- ⚡ **Real-time** - Fast response with visual feedback (LoadingSpinner, ErrorMessage)
+- 🎯 **Global design system** - CSS Variables and reusable components
+- ✅ **TypeScript** - Full static typing in frontend and backend
+- 🧪 **Comprehensive tests** - Vitest (unit) + Cypress (E2E)
+- 🎭 **Component testing** - Vue component tests with @vue/test-utils
 
-## 🏗️ Arquitectura
+## 🏗️ Architecture
 
 ```
 recipe-lab/
 ├── client/                 # Frontend Vue 3 + TypeScript
 │   ├── src/
 │   │   ├── assets/
-│   │   │   └── styles/     # CSS globals (main.css, variables.css)
-│   │   ├── components/     # Components reutilitzables
+│   │   │   └── styles/     # Global CSS (main.css, variables.css)
+│   │   ├── components/     # Reusable components
 │   │   │   ├── AppHeader.vue
 │   │   │   ├── LanguageSelector.vue
 │   │   │   ├── LoadingSpinner.vue
 │   │   │   ├── ErrorMessage.vue
-│   │   │   └── __tests__/  # Tests unitaris components
-│   │   ├── locales/        # Traduccions i18n
+│   │   │   └── __tests__/  # Component unit tests
+│   │   ├── locales/        # i18n translations
 │   │   │   ├── ca.json
 │   │   │   ├── es.json
 │   │   │   └── en.json
@@ -40,14 +40,14 @@ recipe-lab/
 │   │   ├── stores/         # Pinia stores
 │   │   │   ├── recipe.ts
 │   │   │   └── __tests__/
-│   │   ├── views/          # Pàgines
+│   │   ├── views/          # Pages
 │   │   │   ├── HomeView.vue
 │   │   │   └── RecipeView.vue
 │   │   ├── router/         # Vue Router
-│   │   ├── i18n.ts         # Configuració vue-i18n
+│   │   ├── i18n.ts         # vue-i18n configuration
 │   │   └── types/          # TypeScript types
 │   ├── cypress/
-│   │   └── e2e/            # Tests E2E
+│   │   └── e2e/            # E2E tests
 │   │       ├── home.cy.ts
 │   │       ├── recipe.cy.ts
 │   │       ├── recipeView.cy.ts
@@ -60,113 +60,124 @@ recipe-lab/
     ├── src/
     │   ├── routes/         # API endpoints
     │   │   └── recipe.ts
-    │   ├── services/       # Lògica de negoci
+    │   ├── services/       # Business logic
     │   │   └── aiService.ts
-    │   ├── types/          # TypeScript types compartits
-    │   ├── i18n.ts         # Configuració i18next
-    │   └── __tests__/      # Tests Jest
-    ├── locales/            # Traduccions backend
+    │   ├── types/          # Shared TypeScript types
+    │   ├── i18n.ts         # i18next configuration
+    │   └── __tests__/      # Jest tests
+    ├── locales/            # Backend translations
     │   ├── ca/translation.json
     │   ├── es/translation.json
     │   └── en/translation.json
     └── package.json
 ```
 
-## 🚀 Inici ràpid
+## 🚀 Quick Start
 
-### Prerequisits
+### Prerequisites
 
-- Node.js v20.19.0 o superior
-- npm o yarn
-- Clau API de Groq ([obtenir aquí](https://console.groq.com))
+- Node.js v20.19.0 or higher
+- npm or yarn
+- Groq API Key ([get it here](https://console.groq.com))
 
-### Instal·lació
+### Installation
 
-1. **Clona el repositori**
+1. **Clone the repository**
+
 ```bash
 git clone https://github.com/GeorginaTS/recipe-lab.git
 cd recipe-lab
 ```
 
-2. **Configura el servidor**
+2. **Setup the server**
+
 ```bash
 cd server
 npm install
 
-# Crea l'arxiu .env
+# Create .env file
 echo "PORT=3000" > .env
-echo "GROQ_API_KEY=la_teva_clau_api" >> .env
+echo "GROQ_API_KEY=your_api_key" >> .env
 ```
 
-3. **Configura el client**
+3. **Setup the client**
+
 ```bash
 cd ../client
 npm install
 
-# Crea l'arxiu .env (opcional)
+# Create .env file (optional)
 echo "VITE_API_URL=http://localhost:3000" > .env
 ```
 
-### Execució en desenvolupament
+### Running in Development
 
-**Terminal 1 - Servidor:**
+**Terminal 1 - Server:**
+
 ```bash
 cd server
 npm run dev
 ```
 
 **Terminal 2 - Client:**
+
 ```bash
 cd client
 npm run dev
 ```
 
-Obre el navegador a `http://localhost:5173` 🎉
+Open your browser at `http://localhost:5173` 🎉
 
-## 📖 Ús
+## 📖 Usage
 
-1. **Selecciona l'idioma** - Clica a les banderes (🇦🇩 CA / 🇪🇸 ES / 🇬🇧 EN) a la barra superior
-2. **Introdueix ingredients** - Afegeix els ingredients que tens disponibles
-3. **Genera recepta** - Clica el botó i espera uns segons
-4. **Gaudeix** - Consulta la recepta amb ingredients, passos i variants!
+1. **Select language** - Click on the flags (🇦🇩 CA / 🇪🇸 ES / 🇬🇧 EN) in the top bar
+2. **Enter ingredients** - Add the ingredients you have available
+3. **Generate recipe** - Click the button and wait a few seconds
+4. **Enjoy** - Check the recipe with ingredients, steps, and variants!
 
-La recepta es generarà en l'idioma seleccionat gràcies a la sincronització frontend-backend via `Accept-Language` header.
+The recipe will be generated in the selected language thanks to frontend-backend synchronization via `Accept-Language` header.
 
 ## 🧪 Tests
 
 ### Backend (Jest + Supertest)
+
 ```bash
 cd server
-npm test                    # Executar tots els tests
-npm run test:watch          # Mode watch
-npm run test:coverage       # Amb cobertura
+npm test                    # Run all tests
+npm run test:watch          # Watch mode
+npm run test:coverage       # With coverage
 ```
 
-Tests disponibles:
+Available tests:
+
 - ✅ API endpoints (`recipe.test.ts`)
 - ✅ AI Service (`aiService.test.ts`)
 
-### Frontend - Tests Unitaris (Vitest)
+### Frontend - Unit Tests (Vitest)
+
 ```bash
 cd client
-npm run test:unit          # Tests unitaris
-npm run test:unit:ui       # UI de Vitest
+npm run test:unit          # Unit tests
+npm run test:unit:ui       # Vitest UI
 ```
 
-Tests disponibles:
+Available tests:
+
 - ✅ LoadingSpinner component
 - ✅ ErrorMessage component
 - ✅ Recipe store (Pinia)
 - ✅ API service
 
-### Frontend - Tests E2E (Cypress)
+### Frontend - E2E Tests (Cypress)
+
 ```bash
 cd client
-npm run test:e2e           # Tests E2E (headless)
-npm run test:e2e:dev       # Tests E2E amb UI
+npm run test:e2e           # E2E tests (headless)
+npm run test:e2e:dev       # E2E tests with UI
 ```
 
-Tests disponibles (34+ tests):
+Available tests (34+ tests):
+
 - ✅ Home page (9 tests)
 - ✅ Recipe generation (3 tests)
 - ✅ Recipe view (6 tests)
@@ -174,25 +185,28 @@ Tests disponibles (34+ tests):
 - ✅ Accessibility (5 tests)
 - ✅ Responsive design (11 tests)
 
-## 🏗️ Build per producció
+## 🏗️ Production Build
 
 ### Backend
+
 ```bash
 cd server
-npm run build              # Compila TypeScript → dist/
-npm start                  # Executa des de dist/
+npm run build              # Compile TypeScript → dist/
+npm start                  # Run from dist/
 ```
 
 ### Frontend
+
 ```bash
 cd client
-npm run build              # Genera dist/ optimitzat
-npm run preview            # Preview del build
+npm run build              # Generate optimized dist/
+npm run preview            # Preview the build
 ```
 
-## 🎨 Stack tecnològic
+## 🎨 Tech Stack
 
 ### Frontend
+
 - **Framework**: Vue 3.5.25 (Composition API + `<script setup>`)
 - **Build tool**: Vite 7.2.7
 - **Language**: TypeScript 5.7
@@ -203,6 +217,7 @@ npm run preview            # Preview del build
 - **CSS**: Mobile-first, CSS Variables, Semantic HTML5
 
 ### Backend
+
 - **Runtime**: Node.js 20.19.0
 - **Framework**: Express 5.2.1
 - **Language**: TypeScript 5.7
@@ -211,99 +226,105 @@ npm run preview            # Preview del build
 - **Testing**: Jest 30.0.0 + Supertest 7.0.0
 - **Dev**: ts-node 10.9.2 + nodemon 3.1.11
 
-## 🌍 Internacionalització (i18n)
+## 🌍 Internationalization (i18n)
 
-L'aplicació suporta 3 idiomes amb sincronització completa frontend-backend:
+The application supports 3 languages with complete frontend-backend synchronization:
 
 ### Frontend (vue-i18n)
-- Detecció automàtica de l'idioma del navegador
-- Persistència de la preferència en `localStorage`
-- Canvi dinàmic sense recarregar la pàgina
-- Component `LanguageSelector` amb banderes
+
+- Automatic browser language detection
+- Preference persistence in `localStorage`
+- Dynamic switching without page reload
+- `LanguageSelector` component with flags
 
 ### Backend (i18next)
-- Detecció via `Accept-Language` header
-- Prompts de IA adaptats per idioma
-- Receptes generades en l'idioma seleccionat
 
-### Idiomes suportats
-- 🇦🇩 **Català** (ca) - Idioma per defecte
-- 🇪🇸 **Español** (es)
+- Detection via `Accept-Language` header
+- AI prompts adapted per language
+- Recipes generated in selected language
+
+### Supported Languages
+
+- 🇦🇩 **Catalan** (ca) - Default language
+- 🇪🇸 **Spanish** (es)
 - 🇬🇧 **English** (en)
 
-## 🎯 Variables CSS
+## 🎯 CSS Variables
 
-Sistema de disseny basat en CSS Variables (`variables.css`):
+Design system based on CSS Variables (`variables.css`):
 
 ```css
-/* Colors principals */
+/* Main colors */
 --primary-green: #7cb342
 --secondary-orange: #ff9800
 
-/* Colors de fons */
+/* Background colors */
 --bg-primary: #fffef7
 --bg-secondary: #f5f3eb
 --bg-card: #ffffff
 
-/* Colors de text */
+/* Text colors */
 --text-primary: #2e3c2a
 --text-secondary: #5a6c57
 
 /* Spacing */
 --spacing-xs/sm/md/lg/xl/2xl
 
-/* Ombres */
+/* Shadows */
 --shadow-sm/md/lg
 
-/* Transicions */
+/* Transitions */
 --transition-fast/normal/slow
 ```
 
-## 📁 Documentació addicional
+## 📁 Additional Documentation
 
-- [README del Client](./client/README.md)
-- [README del Server](./server/README.md)
+- [Client README](./client/README.md)
+- [Server README](./server/README.md)
 
-## 🌍 Variables d'entorn
+## 🌍 Environment Variables
 
 ### Server (`.env`)
+
 ```env
 PORT=3000
-GROQ_API_KEY=la_teva_clau_api_de_groq
+GROQ_API_KEY=your_groq_api_key
 ```
 
-### Client (`.env` - opcional)
+### Client (`.env` - optional)
+
 ```env
 VITE_API_URL=http://localhost:3000
 ```
 
-## 🤝 Contribuir
+## 🤝 Contributing
 
-Les contribucions són benvingudes! Si us plau:
+Contributions are welcome! Please:
 
-1. Fes fork del projecte
-2. Crea una branca per la teva feature (`git checkout -b feature/amazing-feature`)
-3. Commit els teus canvis (`git commit -m 'Add amazing feature'`)
-4. Assegura't que els tests passen (`npm test`)
-5. Push a la branca (`git push origin feature/amazing-feature`)
-6. Obre un Pull Request
+1. Fork the project
+2. Create a branch for your feature (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Make sure tests pass (`npm test`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
 
-## 📝 Llicència
+## 📝 License
 
-Aquest projecte és de codi obert i està disponible sota la llicència MIT.
+This project is open source and available under the MIT License.
 
-## 👤 Autor
+## 👤 Author
 
 **GeorginaTS**
+
 - GitHub: [@GeorginaTS](https://github.com/GeorginaTS)
 
-## 🙏 Agraïments
+## 🙏 Acknowledgments
 
-- [Groq](https://groq.com) per l'API d'IA ultraràpida
-- [Vue.js](https://vuejs.org) per l'excel·lent framework
-- [Llama 3.3](https://www.llama.com/) per el model d'IA
-- Comunitat open source
+- [Groq](https://groq.com) for the ultra-fast AI API
+- [Vue.js](https://vuejs.org) for the excellent framework
+- [Llama 3.3](https://www.llama.com/) for the AI model
+- Open source community
 
 ---
 
-Fet amb 💚 per amants de la cuina i la tecnologia
+Made with 💚 by food and technology lovers
