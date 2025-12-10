@@ -5,13 +5,16 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   const { ingredients } = req.body;
+  const locale = req.language || 'ca'; // req.language prové del i18next-http-middleware
+  
   console.log("Ingredients rebuts:", ingredients);
+  console.log("Locale detectat:", locale);
   
   if (!ingredients || !Array.isArray(ingredients))
     return res.status(400).json({ error: "Ingredients no vàlids" });
 
   try {
-    const recipe = await generateRecipe(ingredients);
+    const recipe = await generateRecipe(ingredients, locale);
     console.log("Recepta generada:", recipe);
     res.json(recipe);
   } catch (err) {

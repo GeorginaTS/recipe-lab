@@ -2,34 +2,34 @@
   <main class="home">
     <div class="container content-card">
       <header class="section-header">
-        <h1>🍳 Recipe Lab</h1>
-        <p class="subtitle text-secondary">Genera receptes delicioses amb els ingredients que tens a la nevera</p>
+        <h2>{{ t('home.subtitle') }}</h2>
+        <p class="subtitle text-secondary">{{ t('home.description') }}</p>
       </header>
 
       <section class="ingredients-section">
         <form @submit.prevent="addIngredient" class="input-group">
-          <label for="ingredient-input" class="visually-hidden">Afegeix un ingredient</label>
+          <label for="ingredient-input" class="visually-hidden">{{ t('home.addButton') }}</label>
           <input
             id="ingredient-input"
             v-model="newIngredient"
             type="text"
-            placeholder="Afegeix un ingredient..."
+            :placeholder="t('home.ingredientsPlaceholder')"
             class="ingredient-input"
           />
           <button type="submit" class="btn btn-add">
-            Afegir
+            {{ t('home.addButton') }}
           </button>
         </form>
 
-        <section v-if="ingredients.length > 0" class="ingredients-list" aria-label="Llista d'ingredients">
-          <h2>Els teus ingredients:</h2>
+        <section v-if="ingredients.length > 0" class="ingredients-list" :aria-label="t('home.ingredientsTitle')">
+          <h2>{{ t('home.ingredientsTitle') }}:</h2>
           <ul class="chips">
             <li v-for="(ingredient, index) in ingredients" :key="index" class="chip">
               {{ ingredient }}
               <button
                 @click="removeIngredient(index)"
                 class="chip-remove"
-                :aria-label="`Eliminar ${ingredient}`"
+                :aria-label="`${t('common.close')} ${ingredient}`"
                 type="button"
               >
                 ×
@@ -44,7 +44,7 @@
           class="btn btn-primary btn-lg btn-generate"
           type="button"
         >
-          {{ loading ? 'Generant recepta...' : 'Genera recepta' }}
+          {{ loading ? t('home.generating') : t('home.generateButton') }}
         </button>
 
         <aside v-if="error" class="error" role="alert">
@@ -58,10 +58,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useRecipeStore } from '@/stores/recipe.ts';
 
 const router = useRouter();
 const recipeStore = useRecipeStore();
+const { t } = useI18n();
 
 const newIngredient = ref('');
 const ingredients = ref<string[]>([]);
@@ -91,7 +93,7 @@ const generateRecipe = async () => {
     await recipeStore.fetchRecipe(ingredients.value);
     router.push('/recipe');
   } catch (err) {
-    error.value = err instanceof Error ? err.message : 'Error generant la recepta';
+    error.value = err instanceof Error ? err.message : t('home.error');
   } finally {
     loading.value = false;
   }

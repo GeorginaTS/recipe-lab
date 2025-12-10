@@ -1,0 +1,37 @@
+{
+  "home": {
+    "title": "RecipeLAB",
+    "subtitle": "AI Recipe Generator",
+    "description": "Enter your available ingredients and discover delicious recipes generated with artificial intelligence",
+    "ingredientsTitle": "My ingredients",
+    "ingredientsPlaceholder": "E.g.: tomato, egg, onion...",
+    "addButton": "Add ingredient",
+    "generateButton": "Generate recipe",
+    "generating": "Generating your recipe...",
+    "minIngredients": "At least 2 ingredients required",
+    "error": "Error generating recipe",
+    "tryAgain": "Try again"
+  },
+  "recipe": {
+    "title": "Recipe",
+    "ingredients": "Ingredients",
+    "steps": "Steps",
+    "variants": "Variants",
+    "backButton": "New recipe",
+    "difficulty": "Difficulty",
+    "time": "Time",
+    "servings": "Servings",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard",
+    "minutes": "minutes",
+    "hours": "hours"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "close": "Close"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "recipe": {
+    "generatePrompt": "Genera una recepta amb aquests ingredients: {{ingredients}}. Proporciona el resultat en format JSON amb els camps: titol, descripcio, temps, dificultat, ingredients (array amb nom, quantitat, unitat), passos (array de strings) i variants (array amb nom i descripcio).",
+    "error": "Error al generar la recepta",
+    "validationError": "La resposta de la IA no té el format correcte"
+  }
+}

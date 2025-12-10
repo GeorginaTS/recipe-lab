@@ -19,7 +19,10 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "groq-sdk": "^0.37.0"
+    "groq-sdk": "^0.37.0",
+    "i18next": "^25.7.2",
+    "i18next-fs-backend": "^2.6.1",
+    "i18next-http-middleware": "^3.9.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",

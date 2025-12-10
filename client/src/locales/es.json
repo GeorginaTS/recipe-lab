@@ -1,0 +1,37 @@
+{
+  "home": {
+    "title": "RecipeLAB",
+    "subtitle": "Generador de Recetas con IA",
+    "description": "Introduce los ingredientes que tienes y descubre recetas deliciosas generadas con inteligencia artificial",
+    "ingredientsTitle": "Mis ingredientes",
+    "ingredientsPlaceholder": "Ej: tomate, huevo, cebolla...",
+    "addButton": "Añadir ingrediente",
+    "generateButton": "Generar receta",
+    "generating": "Generando tu receta...",
+    "minIngredients": "Se necesita un mínimo de 2 ingredientes",
+    "error": "Error al generar la receta",
+    "tryAgain": "Volver a intentar"
+  },
+  "recipe": {
+    "title": "Receta",
+    "ingredients": "Ingredientes",
+    "steps": "Pasos",
+    "variants": "Variantes",
+    "backButton": "Nueva receta",
+    "difficulty": "Dificultad",
+    "time": "Tiempo",
+    "servings": "Raciones",
+    "easy": "Fácil",
+    "medium": "Media",
+    "hard": "Difícil",
+    "minutes": "minutos",
+    "hours": "horas"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "close": "Cerrar"
+  }
+}

@@ -1,21 +1,21 @@
 <template>
   <main class="recipe-view">
     <div class="container">
-      <LoadingSpinner v-if="loading" message="Carregant recepta..." />
+      <LoadingSpinner v-if="loading" :message="t('common.loading')" />
 
       <ErrorMessage
         v-else-if="error"
         :message="error"
-        title="Error"
+        :title="t('common.error')"
         show-retry
-        retry-text="Tornar a l'inici"
+        :retry-text="t('recipe.backButton')"
         @retry="goHome"
       />
 
       <article v-else-if="recipe" class="content-card">
         <header class="recipe-header">
-          <nav aria-label="Navegació">
-            <button @click="goHome" class="btn btn-back" type="button">← Tornar</button>
+          <nav :aria-label="t('recipe.title')">
+            <button @click="goHome" class="btn btn-back" type="button">← {{ t('recipe.backButton') }}</button>
           </nav>
           <h1>{{ recipe.titol }}</h1>
           <p class="description text-secondary">{{ recipe.descripcio }}</p>
@@ -26,7 +26,7 @@
         </header>
 
         <section class="section" aria-labelledby="ingredients-heading">
-          <h2 id="ingredients-heading">🥘 Ingredients</h2>
+          <h2 id="ingredients-heading">🥘 {{ t('recipe.ingredients') }}</h2>
           <ul class="ingredients-list list-styled">
             <li v-for="(ingredient, index) in recipe.ingredients" :key="index">
               <span class="ingredient-name">{{ ingredient.nom || ingredient }}</span>
@@ -38,7 +38,7 @@
         </section>
 
         <section class="section" aria-labelledby="steps-heading">
-          <h2 id="steps-heading">👨‍🍳 Passos</h2>
+          <h2 id="steps-heading">👨‍🍳 {{ t('recipe.steps') }}</h2>
           <ol class="steps-list list-numbered">
             <li v-for="(pas, index) in normalizedSteps" :key="index">
               {{ pas }}
@@ -47,7 +47,7 @@
         </section>
 
         <section v-if="recipe.variants && recipe.variants.length > 0" class="section" aria-labelledby="variants-heading">
-          <h2 id="variants-heading">💡 Variants</h2>
+          <h2 id="variants-heading">💡 {{ t('recipe.variants') }}</h2>
           <div class="variants">
             <article v-for="(variant, index) in normalizedVariants" :key="index" class="variant-card card card-border">
               <h3>{{ variant.nom }}</h3>
@@ -64,10 +64,10 @@
 
       <ErrorMessage
         v-else
-        message="No hi ha cap recepta disponible"
-        title="Cap recepta"
+        :message="t('home.error')"
+        :title="t('common.error')"
         show-retry
-        retry-text="Generar una recepta"
+        :retry-text="t('home.generateButton')"
         @retry="goHome"
       />
     </div>
@@ -77,12 +77,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useRecipeStore } from '@/stores/recipe.ts';
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import ErrorMessage from '@/components/ErrorMessage.vue';
 
 const router = useRouter();
 const recipeStore = useRecipeStore();
+const { t } = useI18n();
 
 const recipe = computed(() => recipeStore.recipe);
 const loading = computed(() => recipeStore.loading);

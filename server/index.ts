@@ -4,10 +4,12 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import recipeRouter from "./src/routes/recipe.ts";
+import { i18nMiddleware } from "./src/i18n.ts";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(i18nMiddleware);
 
 app.use("/api/recipe", recipeRouter);
 

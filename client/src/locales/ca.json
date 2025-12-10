@@ -1,0 +1,37 @@
+{
+  "home": {
+    "title": "RecipeLAB",
+    "subtitle": "Generador de Receptes amb IA",
+    "description": "Introdueix els ingredients que tens i descobreix receptes delicioses generades amb intel·ligència artificial",
+    "ingredientsTitle": "Els meus ingredients",
+    "ingredientsPlaceholder": "Ex: tomàquet, ou, ceba...",
+    "addButton": "Afegeix ingredient",
+    "generateButton": "Genera recepta",
+    "generating": "Generant la teva recepta...",
+    "minIngredients": "Cal un mínim de 2 ingredients",
+    "error": "Error al generar la recepta",
+    "tryAgain": "Torna-ho a provar"
+  },
+  "recipe": {
+    "title": "Recepta",
+    "ingredients": "Ingredients",
+    "steps": "Passos",
+    "variants": "Variants",
+    "backButton": "Nova recepta",
+    "difficulty": "Dificultat",
+    "time": "Temps",
+    "servings": "Racions",
+    "easy": "Fàcil",
+    "medium": "Mitjana",
+    "hard": "Difícil",
+    "minutes": "minuts",
+    "hours": "hores"
+  },
+  "common": {
+    "loading": "Carregant...",
+    "error": "Error",
+    "retry": "Tornar a intentar",
+    "cancel": "Cancel·lar",
+    "close": "Tancar"
+  }
+}
