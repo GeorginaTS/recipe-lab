@@ -5,8 +5,7 @@
     "moduleResolution": "bundler",
     "esModuleInterop": true,
     "outDir": "dist",
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
+    "noEmit": false,
 
 
     // Other Outputs

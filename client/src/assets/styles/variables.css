@@ -1,13 +1,13 @@
 /* Variables de color - Paleta càlida veggie */
 :root {
   /* Colors principals */
-  --primary-green: #7cb342;
-  --primary-green-dark: #689f38;
-  --primary-green-light: #aed581;
+  --primary-green: #476e49;
+  --primary-green-dark: #3e5a3b;
+  --primary-green-light: #91ba6d;
 
-  --secondary-orange: #ff9800;
+  --secondary-orange: #dfae43;
   --secondary-orange-dark: #f57c00;
-  --secondary-orange-light: #ffb74d;
+  --secondary-orange-light: #fdca7d;
 
   --accent-red: #e57373;
   --accent-yellow: #ffd54f;
@@ -29,8 +29,8 @@
   --info: #42a5f5;
 
   /* Gradient */
-  --gradient-primary: linear-gradient(135deg, #7cb342 0%, #ff9800 100%);
-  --gradient-secondary: linear-gradient(135deg, #aed581 0%, #ffb74d 100%);
+  --gradient-primary: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-orange) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--primary-green-light) 0%, var(--secondary-orange-light) 100%);
 
   /* Ombres */
   --shadow-sm: 0 2px 8px rgba(46, 60, 42, 0.1);

@@ -8,6 +8,7 @@
     "addButton": "Add ingredient",
     "generateButton": "Generate recipe",
     "generating": "Generating your recipe...",
+    "emptyState": "Add ingredients to start creating your personalized recipe",
     "minIngredients": "At least 2 ingredients required",
     "error": "Error generating recipe",
     "tryAgain": "Try again"

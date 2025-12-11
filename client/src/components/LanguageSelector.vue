@@ -1,15 +1,15 @@
 <template>
-  <div class="language-selector">
+  <nav>
     <button
       v-for="lang in languages"
       :key="lang.code"
-      :class="['lang-btn', { active: currentLocale === lang.code }]"
+      :data-active="currentLocale === lang.code"
       :aria-label="`${lang.label}`"
       @click="changeLocale(lang.code)"
     >
       {{ lang.code.toUpperCase() }}
     </button>
-  </div>
+  </nav>
 </template>
 
 <script setup lang="ts">
@@ -34,43 +34,4 @@ const changeLocale = (newLocale: SupportedLocale) => {
 }
 </script>
 
-<style scoped>
-.language-selector {
-  width: fit-content;
-  display: flex;
-  gap: 0.25rem;
-  align-items: flex-end;
-}
 
-.lang-btn {
-  padding: 0.5rem 1rem;
-  border: 1px solid rgba(46, 60, 42, 0.2);
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: 0.875rem;
-  transition: var(--transition-fast);
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.lang-btn:hover {
-  background: var(--bg-card);
-  border-color: var(--primary-green-light);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
-}
-
-.lang-btn.active {
-  background: var(--primary-green);
-  color: white;
-  border-color: var(--primary-green);
-}
-
-.lang-btn:focus-visible {
-  outline: 2px solid var(--primary-green);
-  outline-offset: 2px;
-}
-</style>

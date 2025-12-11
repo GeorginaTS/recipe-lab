@@ -1,0 +1,97 @@
+/* Responsive - Mobile First (320px base) */
+
+/* Tablet (481px+) */
+@media (min-width: 481px) {
+  html {
+    font-size: 14px;
+  }
+
+  main {
+    padding: var(--spacing-lg);
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  ul li {
+    font-size: 0.95rem;
+  }
+
+  ol {
+    padding-left: var(--spacing-lg);
+  }
+
+  form {
+    flex-direction: row;
+  }
+
+  form input {
+    flex: 1;
+  }
+
+  form button {
+    width: auto;
+  }
+
+  main > div[role='status'] > div {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Desktop (769px+) */
+@media (min-width: 769px) {
+  html {
+    font-size: 16px;
+  }
+
+  main {
+    padding: var(--spacing-2xl);
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  article {
+    padding: var(--spacing-lg);
+  }
+
+  article h3 {
+    font-size: 1.25rem;
+  }
+
+  main > aside[role='alert'] {
+    padding: var(--spacing-3xl);
+  }
+
+  main > aside[role='alert'] > div {
+    font-size: 4rem;
+  }
+
+  main > aside[role='alert'] h2 {
+    font-size: 1.75rem;
+  }
+
+  main > aside[role='alert'] p {
+    font-size: 1.1rem;
+  }
+}

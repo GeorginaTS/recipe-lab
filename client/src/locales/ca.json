@@ -8,6 +8,7 @@
     "addButton": "Afegeix ingredient",
     "generateButton": "Genera recepta",
     "generating": "Generant la teva recepta...",
+    "emptyState": "Afegeix ingredients per començar a crear la teva recepta personalitzada",
     "minIngredients": "Cal un mínim de 2 ingredients",
     "error": "Error al generar la recepta",
     "tryAgain": "Torna-ho a provar"

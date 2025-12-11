@@ -8,6 +8,7 @@
     "addButton": "Añadir ingrediente",
     "generateButton": "Generar receta",
     "generating": "Generando tu receta...",
+    "emptyState": "Añade ingredientes para empezar a crear tu receta personalizada",
     "minIngredients": "Se necesita un mínimo de 2 ingredientes",
     "error": "Error al generar la receta",
     "tryAgain": "Volver a intentar"

@@ -1,57 +1,60 @@
 <template>
-  <main class="home">
-    <div class="container content-card">
-      <header class="section-header">
-        <h2>{{ t('home.subtitle') }}</h2>
-        <p class="subtitle text-secondary">{{ t('home.description') }}</p>
-      </header>
+  <main>
+    <header>
+      <h2>{{ t('home.subtitle') }}</h2>
+      <p>{{ t('home.description') }}</p>
+    </header>
 
-      <section class="ingredients-section">
-        <form @submit.prevent="addIngredient" class="input-group">
-          <label for="ingredient-input" class="visually-hidden">{{ t('home.addButton') }}</label>
+    <section class="card">
+      <h3>🥘 {{ t('home.addButton') }}</h3>
+      <form @submit.prevent="addIngredient">
+        <div class="input-group">
+          <span class="input-icon">🥬</span>
           <input
             id="ingredient-input"
             v-model="newIngredient"
             type="text"
             :placeholder="t('home.ingredientsPlaceholder')"
-            class="ingredient-input"
           />
-          <button type="submit" class="btn btn-add">
-            {{ t('home.addButton') }}
+          <button type="submit" class="btn-secondary">
+            + {{ t('home.addButton') }}
           </button>
-        </form>
+        </div>
+      </form>
+    </section>
 
-        <section v-if="ingredients.length > 0" class="ingredients-list" :aria-label="t('home.ingredientsTitle')">
-          <h2>{{ t('home.ingredientsTitle') }}:</h2>
-          <ul class="chips">
-            <li v-for="(ingredient, index) in ingredients" :key="index" class="chip">
-              {{ ingredient }}
-              <button
-                @click="removeIngredient(index)"
-                class="chip-remove"
-                :aria-label="`${t('common.close')} ${ingredient}`"
-                type="button"
-              >
-                ×
-              </button>
-            </li>
-          </ul>
-        </section>
+    <section v-if="ingredients.length > 0" class="card ingredients-card" :aria-label="t('home.ingredientsTitle')">
+      <h3>✓ {{ t('home.ingredientsTitle') }}</h3>
+      <ul>
+        <li v-for="(ingredient, index) in ingredients" :key="index" class="chip">
+          <span>{{ ingredient }}</span>
+          <button
+            @click="removeIngredient(index)"
+            :aria-label="`${t('common.close')} ${ingredient}`"
+            type="button"
+          >
+            ×
+          </button>
+        </li>
+      </ul>
+      <button
+        @click="generateRecipe"
+        :disabled="loading"
+        type="button"
+        class="btn-primary"
+      >
+        {{ loading ? '⏳ ' + t('home.generating') : '✨ ' + t('home.generateButton') }}
+      </button>
+    </section>
 
-        <button
-          @click="generateRecipe"
-          :disabled="ingredients.length === 0 || loading"
-          class="btn btn-primary btn-lg btn-generate"
-          type="button"
-        >
-          {{ loading ? t('home.generating') : t('home.generateButton') }}
-        </button>
-
-        <aside v-if="error" class="error" role="alert">
-          {{ error }}
-        </aside>
-      </section>
+    <div v-else class="empty-state">
+      <span class="empty-icon">🍳</span>
+      <p>{{ t('home.emptyState') }}</p>
     </div>
+
+    <aside v-if="error" role="alert">
+      {{ error }}
+    </aside>
   </main>
 </template>
 
@@ -100,83 +103,4 @@ const generateRecipe = async () => {
 };
 </script>
 
-<style scoped>
-/* Layout específic HomeView */
-.home {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
 
-.home .container {
-  max-width: 1024px;
-  width: 100%;
-  margin-top: var(--spacing-lg);
-}
-
-.subtitle {
-  margin-top: var(--spacing-sm);
-  font-size: 0.9rem;
-}
-
-.ingredients-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-lg);
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-}
-
-.btn-add {
-  background: var(--primary-green);
-  color: white;
-}
-
-.btn-add:hover {
-  background: var(--primary-green-dark);
-  transform: translateY(-2px);
-}
-
-.btn-generate {
-  margin-top: var(--spacing-md);
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-sm);
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* Tablet (481px+) */
-@media (min-width: 481px) {
-  .subtitle {
-    font-size: 1rem;
-  }
-}
-
-/* Desktop (769px+) */
-@media (min-width: 769px) {
-  .home {
-    align-items: center;
-  }
-
-  .home .container {
-    margin-top: 0;
-  }
-
-  .subtitle {
-    font-size: 1.1rem;
-  }
-
-  .input-group {
-    flex-direction: row;
-  }
-}
-</style>

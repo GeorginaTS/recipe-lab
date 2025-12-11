@@ -1,5 +1,5 @@
 import express from "express";
-import { generateRecipe } from "../services/aiService.ts";
+import { generateRecipe } from "../services/aiService.js";
 
 const router = express.Router();
 
