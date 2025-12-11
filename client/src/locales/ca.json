@@ -1,8 +1,8 @@
 {
   "home": {
     "title": "RecipeLAB",
-    "subtitle": "Generador de Receptes amb IA",
-    "description": "Introdueix els ingredients que tens i descobreix receptes delicioses generades amb intel·ligència artificial",
+    "subtitle": "Què Cuino Avui? – El teu Xef d’IA",
+    "description": "Obre la nevera, apunta el que hi ha i deixa que la intel·ligència artificial inventi per tu un plat irresistible. Del “no sé què fer” al “quina bona idea!” en un clic.",
     "ingredientsTitle": "Els meus ingredients",
     "ingredientsPlaceholder": "Ex: tomàquet, ou, ceba...",
     "addButton": "Afegeix ingredient",

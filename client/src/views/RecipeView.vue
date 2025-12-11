@@ -12,14 +12,12 @@
       />
 
       <article v-else-if="recipe">
-        <header>
-          <h1>{{ recipe.titol }}</h1>
-          <p>{{ recipe.descripcio }}</p>
-          <div role="list">
-            <span role="listitem">⏱️ {{ recipe.temps }}</span>
-            <span role="listitem">📊 {{ recipe.dificultat }}</span>
-          </div>
-        </header>
+        <RecipeHeader
+          :title="recipe.titol || ''"
+          :description="recipe.descripcio || ''"
+          :time="recipe.temps"
+          :difficulty="recipe.dificultat"
+        />
 
         <section aria-labelledby="ingredients-heading">
           <h2 id="ingredients-heading">🥘 {{ t('recipe.ingredients') }}</h2>
@@ -73,6 +71,7 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import ErrorMessage from '@/components/ErrorMessage.vue'
 import IngredientsList from '@/components/IngredientsList.vue'
 import VariantsList from '@/components/VariantsList.vue'
+import RecipeHeader from '@/components/RecipeHeader.vue'
 
 const router = useRouter()
 const recipeStore = useRecipeStore()

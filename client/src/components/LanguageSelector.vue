@@ -1,11 +1,12 @@
 <template>
-  <nav>
+  <nav aria-label="Language selector" class="language-selector">
     <button
       v-for="lang in languages"
       :key="lang.code"
       :data-active="currentLocale === lang.code"
       :aria-label="`${lang.label}`"
       @click="changeLocale(lang.code)"
+      class="btn-lang"
     >
       {{ lang.code.toUpperCase() }}
     </button>
@@ -34,4 +35,24 @@ const changeLocale = (newLocale: SupportedLocale) => {
 }
 </script>
 
+<style>
+.language-selector {
+  display: flex;
+  gap: 0.25rem;
+}
+.btn-lang {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 0;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.3s;
+}
 
+.btn-lang[data-active='true'] {
+  background-color: var(--primary-green-light);
+  font-weight: bold;
+}
+</style>

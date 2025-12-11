@@ -1,8 +1,8 @@
 {
   "home": {
     "title": "RecipeLAB",
-    "subtitle": "AI Recipe Generator",
-    "description": "Enter your available ingredients and discover delicious recipes generated with artificial intelligence",
+    "subtitle": "What Should I Cook Today? – Your AI Chef",
+    "description": "Open the fridge, note what you have, and let artificial intelligence invent an irresistible dish for you. From “I don't know what to do” to “What a great idea!” in one click.",
     "ingredientsTitle": "My ingredients",
     "ingredientsPlaceholder": "E.g.: tomato, egg, onion...",
     "addButton": "Add ingredient",

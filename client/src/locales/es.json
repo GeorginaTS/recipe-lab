@@ -1,8 +1,8 @@
 {
   "home": {
     "title": "RecipeLAB",
-    "subtitle": "Generador de Recetas con IA",
-    "description": "Introduce los ingredientes que tienes y descubre recetas deliciosas generadas con inteligencia artificial",
+    "subtitle": "¿Qué Cocino Hoy? – Tu Chef de IA",
+    "description": "Abre la nevera, apunta lo que hay y deja que la inteligencia artificial invente para ti un plato irresistible. De “no sé qué hacer” a “¡qué buena idea!” en un clic.",
     "ingredientsTitle": "Mis ingredientes",
     "ingredientsPlaceholder": "Ej: tomate, huevo, cebolla...",
     "addButton": "Añadir ingrediente",

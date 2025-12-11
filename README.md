@@ -1,3 +1,8 @@
+
+<div align="center">
+  <img src="client/public/logo.webp" alt="Recipe Lab Logo" width="200"/>
+</div>
+
 # 🍳 Recipe Lab
 
 Full-stack multilingual web application that generates personalized recipes using AI based on available ingredients. Built with Vue 3, TypeScript, Express, Firebase, and Groq's Llama 3.3-70b.

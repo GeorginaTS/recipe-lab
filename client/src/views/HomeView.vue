@@ -1,56 +1,28 @@
 <template>
   <main>
-    <header>
-      <h2>{{ t('home.subtitle') }}</h2>
-      <p>{{ t('home.description') }}</p>
-    </header>
+    <HomeHero :subtitle="t('home.subtitle')" :description="t('home.description')" />
 
-    <section class="card">
-      <h3>🥘 {{ t('home.addButton') }}</h3>
-      <form @submit.prevent="addIngredient">
-        <div class="input-group">
-          <span class="input-icon">🥬</span>
-          <input
-            id="ingredient-input"
-            v-model="newIngredient"
-            type="text"
-            :placeholder="t('home.ingredientsPlaceholder')"
-          />
-          <button type="submit" class="btn-secondary">
-            + {{ t('home.addButton') }}
-          </button>
-        </div>
-      </form>
-    </section>
+    <IngredientForm v-model="newIngredient" @add="addIngredient" />
 
     <section v-if="ingredients.length > 0" class="card ingredients-card" :aria-label="t('home.ingredientsTitle')">
       <h3>✓ {{ t('home.ingredientsTitle') }}</h3>
-      <ul>
-        <li v-for="(ingredient, index) in ingredients" :key="index" class="chip">
-          <span>{{ ingredient }}</span>
-          <button
-            @click="removeIngredient(index)"
-            :aria-label="`${t('common.close')} ${ingredient}`"
-            type="button"
-          >
-            ×
-          </button>
-        </li>
-      </ul>
-      <button
-        @click="generateRecipe"
-        :disabled="loading"
-        type="button"
-        class="btn-primary"
-      >
-        {{ loading ? '⏳ ' + t('home.generating') : '✨ ' + t('home.generateButton') }}
-      </button>
+      <ChipsList :ingredients="ingredients" @remove="removeIngredient" />
+      <div class="generate-button-wrapper">
+        <button
+          @click="generateRecipe"
+          :disabled="loading"
+          type="button"
+          class="btn-primary btn-generate"
+        >
+          {{ loading ? '⏳ ' + t('home.generating') : '✨ ' + t('home.generateButton') }}
+        </button>
+      </div>
     </section>
 
-    <div v-else class="empty-state">
+    <section v-else class="empty-state">
       <span class="empty-icon">🍳</span>
       <p>{{ t('home.emptyState') }}</p>
-    </div>
+    </section>
 
     <aside v-if="error" role="alert">
       {{ error }}
@@ -63,6 +35,9 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useRecipeStore } from '@/stores/recipe.ts';
+import HomeHero from '@/components/HomeHero.vue';
+import IngredientForm from '@/components/IngredientForm.vue';
+import ChipsList from '@/components/ChipsList.vue';
 
 const router = useRouter();
 const recipeStore = useRecipeStore();
@@ -73,11 +48,9 @@ const ingredients = ref<string[]>([]);
 const loading = ref(false);
 const error = ref('');
 
-const addIngredient = () => {
-  const ingredient = newIngredient.value.trim();
+const addIngredient = (ingredient: string) => {
   if (ingredient && !ingredients.value.includes(ingredient)) {
     ingredients.value.push(ingredient);
-    newIngredient.value = '';
     error.value = '';
   }
 };
@@ -103,4 +76,30 @@ const generateRecipe = async () => {
 };
 </script>
 
+<style scoped>
+.generate-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-xl);
+}
+
+.btn-generate {
+  font-size: 1.1rem;
+  padding: var(--spacing-md) var(--spacing-2xl);
+  min-width: 250px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(124, 179, 66, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-generate:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(124, 179, 66, 0.4);
+}
+
+.btn-generate:active:not(:disabled) {
+  transform: translateY(-1px) scale(1);
+  box-shadow: 0 3px 8px rgba(124, 179, 66, 0.3);
+}
+</style>
 

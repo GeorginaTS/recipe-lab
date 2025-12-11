@@ -42,6 +42,15 @@
     width: auto;
   }
 
+  .input-group {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .input-group button {
+    width: auto;
+  }
+
   main > div[role='status'] > div {
     width: 60px;
     height: 60px;
