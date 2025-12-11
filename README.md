@@ -1,329 +1,173 @@
 # 🍳 Recipe Lab
 
-Full-stack multilingual web application to generate recipes with artificial intelligence based on the ingredients you have in your pantry or fridge. Built with Vue 3, TypeScript, Express, and Groq's API with Llama 3.3-70b.
+Full-stack multilingual web application that generates personalized recipes using AI based on available ingredients. Built with Vue 3, TypeScript, Express, Firebase, and Groq's Llama 3.3-70b.
+
+## 👉 [Live demo](https://recipelab-859ee.web.app/)
 
 ## 🌟 Features
 
-- 🤖 **AI Recipe Generation** - Uses Groq's Llama 3.3-70b-versatile
-- 🌍 **Multilingual (i18n)** - Catalan, Spanish, and English with dynamic language switching
-- 🎨 **Mobile-first** - Responsive design with modern CSS
-- 📱 **Semantic HTML5** - Accessible structure and SEO optimized
-- ♿ **Accessible** - ARIA labels, keyboard navigation
-- 🥬 **Warm veggie design** - Natural color palette
-- ⚡ **Real-time** - Fast response with visual feedback (LoadingSpinner, ErrorMessage)
-- 🎯 **Global design system** - CSS Variables and reusable components
-- ✅ **TypeScript** - Full static typing in frontend and backend
-- 🧪 **Comprehensive tests** - Vitest (unit) + Cypress (E2E)
-- 🎭 **Component testing** - Vue component tests with @vue/test-utils
+- 🤖 **AI Recipe Generation** - Powered by Groq's Llama 3.3-70b-versatile
+- 🌍 **Multilingual (i18n)** - Catalan, Spanish, and English with dynamic switching
+- 🎨 **Modern Design** - Mobile-first, cards, animations, gradient backgrounds with patterns
+- 📱 **Semantic & Accessible** - HTML5, ARIA labels, keyboard navigation
+- 🥬 **Natural Palette** - Warm veggie-inspired colors
+- ⚡ **Real-time Feedback** - Loading states, error handling, empty states
+- 🎯 **Design System** - CSS Variables, reusable components
+- ☁️ **Firebase Hosting** - Functions + Hosting deployment
+- ✅ **Full TypeScript** - Frontend and backend
+- 🧪 **Comprehensive Testing** - Vitest (unit) + Cypress (E2E) + Jest (backend)
 
 ## 🏗️ Architecture
 
-```
+```text
 recipe-lab/
-├── client/                 # Frontend Vue 3 + TypeScript
+├── client/                    # Vue 3 + TypeScript frontend
 │   ├── src/
-│   │   ├── assets/
-│   │   │   └── styles/     # Global CSS (main.css, variables.css)
-│   │   ├── components/     # Reusable components
-│   │   │   ├── AppHeader.vue
-│   │   │   ├── LanguageSelector.vue
-│   │   │   ├── LoadingSpinner.vue
-│   │   │   ├── ErrorMessage.vue
-│   │   │   └── __tests__/  # Component unit tests
-│   │   ├── locales/        # i18n translations
-│   │   │   ├── ca.json
-│   │   │   ├── es.json
-│   │   │   └── en.json
-│   │   ├── services/       # API calls
-│   │   │   ├── api.ts
-│   │   │   └── __tests__/
-│   │   ├── stores/         # Pinia stores
-│   │   │   ├── recipe.ts
-│   │   │   └── __tests__/
-│   │   ├── views/          # Pages
-│   │   │   ├── HomeView.vue
-│   │   │   └── RecipeView.vue
-│   │   ├── router/         # Vue Router
-│   │   ├── i18n.ts         # vue-i18n configuration
-│   │   └── types/          # TypeScript types
-│   ├── cypress/
-│   │   └── e2e/            # E2E tests
-│   │       ├── home.cy.ts
-│   │       ├── recipe.cy.ts
-│   │       ├── recipeView.cy.ts
-│   │       ├── navigation.cy.ts
-│   │       ├── accessibility.cy.ts
-│   │       └── responsive.cy.ts
-│   └── package.json
+│   │   ├── assets/styles/    # main.css, variables.css, mediaqueries.css
+│   │   ├── components/       # AppHeader, LanguageSelector, LoadingSpinner, 
+│   │   │                     # ErrorMessage, IngredientsList, VariantsList
+│   │   ├── locales/          # ca.json, es.json, en.json
+│   │   ├── stores/           # Pinia (recipe.ts)
+│   │   ├── views/            # HomeView.vue, RecipeView.vue
+│   │   └── router/           # Vue Router
+│   └── cypress/e2e/          # E2E tests (34+ tests)
 │
-└── server/                 # Backend Express + TypeScript
+└── server/                    # Express + TypeScript backend
     ├── src/
-    │   ├── routes/         # API endpoints
-    │   │   └── recipe.ts
-    │   ├── services/       # Business logic
-    │   │   └── aiService.ts
-    │   ├── types/          # Shared TypeScript types
-    │   ├── i18n.ts         # i18next configuration
-    │   └── __tests__/      # Jest tests
-    ├── locales/            # Backend translations
-    │   ├── ca/translation.json
-    │   ├── es/translation.json
-    │   └── en/translation.json
-    └── package.json
+    │   ├── routes/           # recipe.ts
+    │   ├── services/         # aiService.ts
+    │   ├── app.ts            # Express app
+    │   └── functions.ts      # Firebase Functions entry point
+    ├── locales/              # Backend i18n
+    └── __tests__/            # Jest tests
 ```
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js v20.19.0 or higher
-- npm or yarn
+- Node.js v20.19.0+
 - Groq API Key ([get it here](https://console.groq.com))
+- Firebase CLI (optional, for deployment)
 
 ### Installation
-
-1. **Clone the repository**
 
 ```bash
 git clone https://github.com/GeorginaTS/recipe-lab.git
 cd recipe-lab
-```
 
-2. **Setup the server**
-
-```bash
+# Server setup
 cd server
 npm install
+echo "GROQ_API_KEY=your_api_key" > .env
 
-# Create .env file
-echo "PORT=3000" > .env
-echo "GROQ_API_KEY=your_api_key" >> .env
-```
-
-3. **Setup the client**
-
-```bash
+# Client setup
 cd ../client
 npm install
-
-# Create .env file (optional)
 echo "VITE_API_URL=http://localhost:3000" > .env
 ```
 
-### Running in Development
-
-**Terminal 1 - Server:**
+### Development
 
 ```bash
-cd server
-npm run dev
+# Terminal 1 - Server
+cd server && npm run dev
+
+# Terminal 2 - Client
+cd client && npm run dev
 ```
 
-**Terminal 2 - Client:**
-
-```bash
-cd client
-npm run dev
-```
-
-Open your browser at `http://localhost:5173` 🎉
+Open `http://localhost:5173` 🎉
 
 ## 📖 Usage
 
-1. **Select language** - Click on the flags (🇦🇩 CA / 🇪🇸 ES / 🇬🇧 EN) in the top bar
-2. **Enter ingredients** - Add the ingredients you have available
-3. **Generate recipe** - Click the button and wait a few seconds
-4. **Enjoy** - Check the recipe with ingredients, steps, and variants!
+1. **Select language** - Click flags (CA / ES / EN)
+2. **Add ingredients** - Type and add your available ingredients
+3. **Generate recipe** - Click the button and wait
+4. **Enjoy** - View recipe with ingredients, steps, and variants
 
-The recipe will be generated in the selected language thanks to frontend-backend synchronization via `Accept-Language` header.
+## 🧪 Testing
 
-## 🧪 Tests
+```bash
+# Backend (Jest)
+cd server && npm test
 
-### Backend (Jest + Supertest)
+# Frontend Unit (Vitest)
+cd client && npm run test:unit
+
+# Frontend E2E (Cypress)
+cd client && npm run test:e2e:dev
+```
+
+## 🚢 Firebase Deployment
+
+### Backend (Functions)
 
 ```bash
 cd server
-npm test                    # Run all tests
-npm run test:watch          # Watch mode
-npm run test:coverage       # With coverage
+npm run build
+npm run deploy
 ```
 
-Available tests:
-
-- ✅ API endpoints (`recipe.test.ts`)
-- ✅ AI Service (`aiService.test.ts`)
-
-### Frontend - Unit Tests (Vitest)
+### Frontend (Hosting)
 
 ```bash
 cd client
-npm run test:unit          # Unit tests
-npm run test:unit:ui       # Vitest UI
+npm run build
+
+# From project root
+firebase deploy --only hosting
 ```
 
-Available tests:
-
-- ✅ LoadingSpinner component
-- ✅ ErrorMessage component
-- ✅ Recipe store (Pinia)
-- ✅ API service
-
-### Frontend - E2E Tests (Cypress)
-
-```bash
-cd client
-npm run test:e2e           # E2E tests (headless)
-npm run test:e2e:dev       # E2E tests with UI
-```
-
-Available tests (34+ tests):
-
-- ✅ Home page (9 tests)
-- ✅ Recipe generation (3 tests)
-- ✅ Recipe view (6 tests)
-- ✅ Navigation (3 tests)
-- ✅ Accessibility (5 tests)
-- ✅ Responsive design (11 tests)
-
-## 🏗️ Production Build
-
-### Backend
-
-```bash
-cd server
-npm run build              # Compile TypeScript → dist/
-npm start                  # Run from dist/
-```
-
-### Frontend
-
-```bash
-cd client
-npm run build              # Generate optimized dist/
-npm run preview            # Preview the build
-```
 
 ## 🎨 Tech Stack
 
-### Frontend
+**Frontend:** Vue 3.5, Vite 7.2, TypeScript 5.7, Vue Router 4.6, Pinia 3.0, vue-i18n 10.0  
+**Backend:** Node.js 20.19, Express 5.2, TypeScript 5.7, Groq SDK 0.37, Firebase Functions 7.0  
+**Testing:** Vitest 4.0, Cypress 15.7, Jest 30.0  
+**Deployment:** Firebase Hosting + Functions
 
-- **Framework**: Vue 3.5.25 (Composition API + `<script setup>`)
-- **Build tool**: Vite 7.2.7
-- **Language**: TypeScript 5.7
-- **Routing**: Vue Router 4.6.3
-- **State**: Pinia 3.0.4
-- **i18n**: vue-i18n 10.0.8
-- **Testing**: Vitest 4.0.14 + Cypress 15.7.1
-- **CSS**: Mobile-first, CSS Variables, Semantic HTML5
+## 🌍 Internationalization
 
-### Backend
+Complete frontend-backend i18n synchronization:
 
-- **Runtime**: Node.js 20.19.0
-- **Framework**: Express 5.2.1
-- **Language**: TypeScript 5.7
-- **AI**: Groq SDK 0.37.0 (Llama 3.3-70b-versatile)
-- **i18n**: i18next 25.7.2 + i18next-http-middleware 3.9.0
-- **Testing**: Jest 30.0.0 + Supertest 7.0.0
-- **Dev**: ts-node 10.9.2 + nodemon 3.1.11
+- **Frontend (vue-i18n)**: Automatic detection, localStorage persistence, dynamic switching
+- **Backend (i18next)**: `Accept-Language` header detection, localized AI prompts
+- **Languages**: 🇦🇩 Catalan (default), 🇪🇸 Spanish, 🇬🇧 English
 
-## 🌍 Internationalization (i18n)
+## 🎯 Design System
 
-The application supports 3 languages with complete frontend-backend synchronization:
-
-### Frontend (vue-i18n)
-
-- Automatic browser language detection
-- Preference persistence in `localStorage`
-- Dynamic switching without page reload
-- `LanguageSelector` component with flags
-
-### Backend (i18next)
-
-- Detection via `Accept-Language` header
-- AI prompts adapted per language
-- Recipes generated in selected language
-
-### Supported Languages
-
-- 🇦🇩 **Catalan** (ca) - Default language
-- 🇪🇸 **Spanish** (es)
-- 🇬🇧 **English** (en)
-
-## 🎯 CSS Variables
-
-Design system based on CSS Variables (`variables.css`):
+CSS Variables for consistency:
 
 ```css
-/* Main colors */
 --primary-green: #7cb342
 --secondary-orange: #ff9800
-
-/* Background colors */
 --bg-primary: #fffef7
---bg-secondary: #f5f3eb
---bg-card: #ffffff
-
-/* Text colors */
 --text-primary: #2e3c2a
---text-secondary: #5a6c57
-
-/* Spacing */
---spacing-xs/sm/md/lg/xl/2xl
-
-/* Shadows */
+--spacing-xs/sm/md/lg/xl/2xl/3xl
 --shadow-sm/md/lg
-
-/* Transitions */
 --transition-fast/normal/slow
-```
-
-## 📁 Additional Documentation
-
-- [Client README](./client/README.md)
-- [Server README](./server/README.md)
-
-## 🌍 Environment Variables
-
-### Server (`.env`)
-
-```env
-PORT=3000
-GROQ_API_KEY=your_groq_api_key
-```
-
-### Client (`.env` - optional)
-
-```env
-VITE_API_URL=http://localhost:3000
 ```
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please:
-
 1. Fork the project
-2. Create a branch for your feature (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Make sure tests pass (`npm test`)
-5. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Run tests (`npm test`)
+4. Commit changes (`git commit -m 'Add amazing feature'`)
+5. Push to branch (`git push origin feature/amazing-feature`)
 6. Open a Pull Request
-
-## 📝 License
-
-This project is open source and available under the MIT License.
 
 ## 👤 Author
 
-**GeorginaTS**
-
-- GitHub: [@GeorginaTS](https://github.com/GeorginaTS)
+**GeorginaTS** - [@GeorginaTS](https://github.com/GeorginaTS)
 
 ## 🙏 Acknowledgments
 
-- [Groq](https://groq.com) for the ultra-fast AI API
-- [Vue.js](https://vuejs.org) for the excellent framework
-- [Llama 3.3](https://www.llama.com/) for the AI model
-- Open source community
+- [Groq](https://groq.com) - Ultra-fast AI API
+- [Vue.js](https://vuejs.org) - Progressive framework
+- [Firebase](https://firebase.google.com) - Hosting & Functions
+- [Llama 3.3](https://www.llama.com/) - AI model
 
 ---
 
