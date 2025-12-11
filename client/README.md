@@ -1,77 +1,81 @@
 # Recipe Lab - Client
 
-Aplicació web frontend per a Recipe Lab. Interfície d'usuari per generar receptes amb IA basant-se en els ingredients disponibles.
+Frontend web application for Recipe Lab. User interface to generate AI-powered recipes based on available ingredients.
 
-## 🚀 Tecnologies
+## ✨ Features
 
-- **Vue 3** - Framework JavaScript progressiu
-- **TypeScript** - Tipat estàtic
-- **Vite** - Build tool i dev server
-- **Vue Router** - Navegació
-- **Pinia** - Gestió d'estat
-- **CSS Variables** - Sistema de disseny consistent
+- Multilingual (Catalan, Spanish, English)
+- Modern, responsive design
+- Add, remove, and manage ingredients
+- Instant AI recipe generation
+- Installable as a PWA (desktop & mobile)
+- Accessible and keyboard-friendly
 
-## 📋 Requisits previs
+## 🚀 Technologies
 
-- Node.js (v20.19.0 o superior)
-- npm o yarn
+- **Vue 3** - Progressive JavaScript framework
+- **TypeScript** - Static typing
+- **Vite** - Build tool and dev server
+- **Vue Router** - Navigation
+- **Pinia** - State management
+- **CSS Variables** - Consistent design system
 
-## 🔧 Instal·lació
+## 📋 Prerequisites
 
-1. Navega al directori del client:
+- Node.js (v20.19.0 or higher)
+- npm or yarn
 
-```bash
-cd client
-```
+## 🔧 Installation
 
-2. Instal·la les dependències:
+1. Go to the client directory:
 
-## Customize configuration
+   ```bash
+   cd client
+   ```
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+2. Install dependencies:
 
-## Project Setup
+   ```bash
+   npm install
+   ```
 
-```sh
-npm install
-```
+## 📝 Usage
 
-### Compile and Hot-Reload for Development
+1. Select your language (CA / ES / EN)
+2. Add ingredients by typing and clicking “Add ingredient”
+3. Click “Generate recipe” and wait a few seconds
+4. View the generated recipe, variants, and steps
+5. Install the app as a PWA on your device (look for the install button in your browser)
 
-```sh
-npm run dev
-```
+## 💻 Development
 
-### Type-Check, Compile and Minify for Production
+- Start the dev server:
 
-```sh
-npm run build
-```
+  ```bash
+  npm run dev
+  ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+- Build for production:
 
-```sh
-npm run test:unit
-```
+  ```bash
+  npm run build
+  ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+- Run unit tests:
 
-```sh
-npm run test:e2e:dev
-```
+  ```bash
+  npm run test:unit
+  ```
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+- Run end-to-end tests:
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+  ```bash
+  npm run test:e2e:dev
+  ```
 
-```sh
-npm run build
-npm run test:e2e
-```
+## 📱 PWA (Progressive Web App)
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- The app can be installed on desktop or mobile for offline use.
+- Icons and screenshots are configured in `vite.config.ts` using the VitePWA plugin.
+- To update icons/screenshots, place them in `public/` and update the manifest in the config.
+- Rebuild and redeploy after changes.
